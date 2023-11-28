@@ -11,3 +11,12 @@
     2. create products array
     3. add product images
     4. render product
+6. React Bootstrap
+    1. style the Header
+    2. style the Main
+    3. style the footer
+7. Add page routing
+    1. npm i react-router-dom
+    2. create route for home page
+    3. create router for product page
+    4. add helmet for setting page title
