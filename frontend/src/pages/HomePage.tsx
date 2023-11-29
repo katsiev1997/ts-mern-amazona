@@ -1,12 +1,13 @@
 import axios from 'axios'
 import React from 'react'
-import { Row, Col  } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Product } from '../types/Product'
 import { ApiError } from '../types/ApiError'
 import { getError } from '../utils'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
+import ProductItem from '../components/ProductItem'
 
 type State = {
   products: Product[]
@@ -53,24 +54,19 @@ const HomePage = () => {
     }
     fetchData()
   }, [])
-  return (
-    loading ? (<LoadingBox />) : error ? ( <MessageBox variant='danger'>{error}</MessageBox>) : (
-      <Row>
-        {products.map((product) => (
-          <Col key={product.slug} sm={6} md={4} lg={3}>
-            <Link to={'/product/' + product.slug}>
-              <img
-                src={product.image}
-                alt={product.name}
-                className="product-image"
-              />
-              <h2>{product.name}</h2>
-              <p>${product.price}</p>
-            </Link>
-          </Col>
-        ))}
-      </Row>
-  ))
+  return loading ? (
+    <LoadingBox />
+  ) : error ? (
+    <MessageBox variant="danger">{error}</MessageBox>
+  ) : (
+    <Row>
+      {products.map((product) => (
+        <Col key={product.slug} sm={6} md={4} lg={3}>
+          <ProductItem product={product} />
+        </Col>
+      ))}
+    </Row>
+  )
 }
 
 export default HomePage
