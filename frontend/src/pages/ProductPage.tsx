@@ -11,7 +11,7 @@ import Rating from '../components/Rating'
 const ProductPage = () => {
   const params = useParams()
   const { slug } = params
-  const { data: product, isLoading, error } = useGetProductsBySlugQuery(slug!)
+  const { data: product, isLoading, error } = useGetProductsBySlugQuery(slug!)  
   return isLoading ? (
     <LoadingBox />
   ) : error ? (
@@ -61,7 +61,7 @@ const ProductPage = () => {
                       {product.countInStock > 0 ? (
                         <Badge bg="success">In Stock</Badge>
                       ) : (
-                        <Badge bg="danger">Unvailable</Badge>
+                        <Badge bg="danger">Unavailable</Badge>
                       )}
                     </Col>
                   </Row>

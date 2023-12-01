@@ -1,11 +1,12 @@
 import React from 'react'
-import { Navbar, Container, Nav, Button } from 'react-bootstrap'
+import { Navbar, Container, Nav, Button, Badge } from 'react-bootstrap'
 import { Outlet } from 'react-router-dom'
 import { Store } from './Store'
+import { Link } from 'react-router-dom'
 
 function App() {
   const {
-    state: { mode },
+    state: { mode, cart },
     dispatch,
   } = React.useContext(Store)
 
@@ -21,18 +22,25 @@ function App() {
       <header>
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
-            <Navbar.Brand>TS Amazona</Navbar.Brand>
+            <Link to="/">
+              <Navbar.Brand>TS Amazona</Navbar.Brand>
+            </Link>
           </Container>
           <Nav>
             <Button variant={mode} onClick={switchModeHandler}>
               <i className={mode === 'light' ? 'fa fa-sun' : 'fa fa-moon'}></i>
             </Button>
-            <a href="/cart" className="nav-link">
+            <Link to="/cart" className="nav-link">
               Cart
-            </a>
-            <a href="signin" className="nav-link">
+              {cart.cartItems.length > 0 && (
+                <Badge pill bg="danger">
+                  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                </Badge>
+              )}
+            </Link>
+            <Link to="signin" className="nav-link">
               Sign In
-            </a>
+            </Link>
           </Nav>
         </Navbar>
       </header>
