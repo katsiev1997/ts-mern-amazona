@@ -96,7 +96,7 @@ const ShippingAddressPage = () => {
               onChange={(e) => setCountry(e.target.value)}
             />
           </Form.Group>
-          <div className="mb-3">
+          <div className="mt-3">
             <Button variant="primary" type="submit">
               Continue
             </Button>
