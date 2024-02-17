@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Store } from "../Store";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { Button, Form } from "react-bootstrap";

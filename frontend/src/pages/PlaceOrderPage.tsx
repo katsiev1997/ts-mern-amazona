@@ -1,20 +1,19 @@
-import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Store } from "../Store";
-import { useCreateOrderMutation } from "../hooks/orderHook";
-import { getError } from "../utils";
-import { ApiError } from "../types/ApiError";
-import { toast } from "react-toastify";
-import CheckoutSteps from "../components/CheckoutSteps";
-import { Helmet } from "react-helmet-async";
+import { useContext, useEffect } from "react";
 import { Button, Card, Col, ListGroup, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Store } from "../Store";
+import CheckoutSteps from "../components/CheckoutSteps";
 import LoadingBox from "../components/LoadingBox";
+import { useCreateOrderMutation } from "../hooks/orderHooks";
+import { ApiError } from "../types/ApiError";
+import { getError } from "../utils";
 
 const PlaceOrderPage = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Store);
-  const { cart, userInfo } = state;
+  const { cart } = state;
   const round2 = (num: number) => Math.round(num * 100 + Number.EPSILON) / 100;
 
   cart.itemsPrice = round2(
