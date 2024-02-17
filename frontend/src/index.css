@@ -2,7 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing:     antialiased;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -24,4 +24,14 @@ img.thumbnail {
 
 .small-container {
   max-width: 600px;
+}
+
+.checkout-steps > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #a0a0a0;
+}
+
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f08000;
+  color: #f08000;
 }
